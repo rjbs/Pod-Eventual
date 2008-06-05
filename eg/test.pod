@@ -12,9 +12,11 @@ say 5;
 This is a test of the NAME header.
 
 =head2 Extended
-This is all part of the head2 paragraph, whether you believe it or not.
+This is all part of the head2 para, whether you believe it or not.
 
 Then we're in a normal text paragraph.
+
+Still normal!
 
   This one is verbatim.
 
