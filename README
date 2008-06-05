@@ -1,0 +1,3 @@
+
+Pod::Eventual parses POD documents into a very, very simple event stream.
+
