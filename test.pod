@@ -1,0 +1,25 @@
+use 5.010;
+say 1;
+say 2;
+=pod
+say 3;
+=cut
+say 4;
+say 5;
+
+=head1 NAME
+
+This is a test of the NAME header.
+
+=head2 Extended
+This is all part of the head2 paragraph, whether you believe it or not.
+
+Then we're in a normal text paragraph.
+
+  This one is verbatim.
+
+Then back to normal.
+
+  And then verbatim
+Including a secondary unindented line.  Oops!  Should still work.
+=cut
