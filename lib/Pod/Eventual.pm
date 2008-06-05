@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 package Pod::Eventual;
+use Mixin::Linewise::Readers;
 
 sub read_handle {
   my ($self, $handle, $arg) = @_;
@@ -38,7 +39,6 @@ sub read_handle {
     }
 
     if ($line =~ /^=(\S+)(?:\s*)(.*?)(\n)\z/) {
-    # if ($line =~ /^=(\S+)(?:\s+(.+?))?\z/s) {
       my $command = $1;
       my $content = "$2$3";
       $current = {
