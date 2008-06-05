@@ -10,8 +10,8 @@ sub read_handle {
   my $current;
 
   LINE: while (my $line = $handle->getline) {
-    if ($line =~ /^=cut(?:\s*(.*)|$)/) {
-      my $content = $1;
+    if ($line =~ /^=cut(?:\s*)(.*?)(\n)\z/) {
+      my $content = "$1$2";
       $in_pod = 0;
       $self->record_event($current) if $current;
       undef $current;
@@ -37,9 +37,10 @@ sub read_handle {
       next LINE;
     }
 
-    if ($line =~ /^=(\S+)(?:\s+(.+?))\z/s) {
+    if ($line =~ /^=(\S+)(?:\s*)(.*?)(\n)\z/) {
+    # if ($line =~ /^=(\S+)(?:\s+(.+?))?\z/s) {
       my $command = $1;
-      my $content = $2;
+      my $content = "$2$3";
       $current = {
         type    => 'command',
         command => $command,
