@@ -122,10 +122,8 @@ sub read_handle {
 
   my $in_pod  = $arg->{in_pod} ? 1 : 0;
   my $current;
-  my $ln = 0;
 
   LINE: while (my $line = $handle->getline) {
-    $ln++;
     if ($line =~ /^=cut(?:\s*)(.*?)(\n)\z/) {
       my $content = "$1$2";
       $in_pod = 0;
@@ -135,7 +133,7 @@ sub read_handle {
         type       => 'command',
         command    => 'cut',
         content    => $content,
-        start_line => $ln,
+        start_line => $handle->input_line_number,
       });
       next LINE;
     }
@@ -143,7 +141,7 @@ sub read_handle {
     $in_pod = 1 if $line =~ /^=\S+/;
 
     unless ($in_pod) {
-      $self->handle_nonpod($line, $ln);
+      $self->handle_nonpod($line, $handle->input_line_number);
       next LINE;
     }
 
@@ -165,7 +163,7 @@ sub read_handle {
         type       => 'command',
         command    => $command,
         content    => $content,
-        start_line => $ln,
+        start_line => $handle->input_line_number,
       };
       next LINE;
     }
@@ -175,7 +173,7 @@ sub read_handle {
       $current = {
         type       => 'verbatim',
         content    => $content,
-        start_line => $ln,
+        start_line => $handle->input_line_number,
       };
       next LINE;
     }
@@ -183,7 +181,7 @@ sub read_handle {
     $current = { 
       type       => 'text',
       content    => $line,
-      start_line => $ln,
+      start_line => $handle->input_line_number,
     };
   }
 
