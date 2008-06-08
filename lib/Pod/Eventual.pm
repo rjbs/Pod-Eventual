@@ -139,8 +139,10 @@ sub read_handle {
 
     $in_pod = 1 if $line =~ /^=\S+/;
 
-    # consider doing $self->alien_line($line) here -- rjbs, 2008-06-05
-    next LINE unless $in_pod;
+    unless ($in_pod) {
+      $self->handle_nonpod($line);
+      next LINE;
+    }
 
     if ($line =~ /^$/) {
       $self->handle_event($current) if $current;
@@ -183,5 +185,7 @@ sub read_handle {
 sub handle_event {
   die '...';
 }
+
+sub handle_nonpod {}
 
 1;
