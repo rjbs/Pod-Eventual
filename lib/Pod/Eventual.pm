@@ -20,7 +20,8 @@ use Mixin::Linewise::Readers;
 POD is a pretty simple format to write, but it can be a big pain to deal with
 reading it and doing anything useful with it.  Most existing POD parsers care
 about semantics, like whether a C<=item> occurred after an C<=over> but before
-a C<back>, figuring out how to link a C<< L<> >>, and other things like that.
+a C<back>, figuring out how to link a C<< LE<lt>E<gt> >>, and other things like
+that.
 
 Pod::Eventual is much less ambitious and much more stupid.  Fortunately, stupid
 is often better.  (That's what I keep telling myself, anyway.)
