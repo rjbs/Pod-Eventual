@@ -89,7 +89,7 @@ Text events look like this:
 Verbatim events are identical to text events, but are created when the first
 line of text begins with whitespace.  The only semantic difference is that
 verbatim events should not be subject to interpretation as POD text (for things
-like C<< L<> >> and so on).  They are often also rendered in monospace.
+like C<< LE<lt>E<gt> >> and so on).  They are often also rendered in monospace.
 
 Pod::Eventual doesn't care.
 
