@@ -46,7 +46,7 @@ A simple header:
 
   =head1 NAME
 
-  { type => 'command', command => 'head1', content => "NAME\n" }
+  { type => 'command', command => 'head1', content => "NAME\n", start_line => 4 }
 
 Notice that the content includes the trailing newline.  That's to maintain
 similarity with this possibly-surprising case:
@@ -58,6 +58,7 @@ similarity with this possibly-surprising case:
     type    => 'command',
     command => 'for',
     content => "HTML\nWe're actually still in the command event, here.\n",
+    start_line => 8,
   }
 
 Pod::Eventual does not care what the command is.  It doesn't keep track of what
@@ -67,7 +68,7 @@ special case is C<=cut>, which is never more than one line.
   =cut
   We are no longer parsing POD when this line is read.
 
-  { type => 'command', command => 'cut', content => "\n" }
+  { type => 'command', command => 'cut', content => "\n", start_line => 15 }
 
 Waiving this special case may be an option in the future.
 
@@ -80,7 +81,7 @@ a verbatim event.
 
 Text events look like this:
 
-  { type => 'text', content => "a string of text ending with a\n" }
+  { type => 'text', content => "a string of text ending with a\n", start_line =>  16 }
 
 =head2 Verbatim Events
 
@@ -189,10 +190,26 @@ sub read_handle {
   return;
 }
 
+=method handle_event
+
+This method is called each time Pod::Evental finishes scanning for a new POD
+event.  It must be implemented by a subclass or it will raise an exception.
+
+=cut
+
 sub handle_event {
   die '...';
 }
 
-sub handle_nonpod {}
+=method handle_nonpod
+
+This method is called each time a non-POD line is seen -- that is, lines after
+C<=cut> and before another command.
+
+If unimplemented by a subclass, it does nothing by default.
+
+=cut
+
+sub handle_nonpod { }
 
 1;
