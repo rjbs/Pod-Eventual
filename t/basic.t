@@ -2,16 +2,10 @@ use strict;
 use warnings;
 
 use Test::More tests => 1;
-use Pod::Eventual;
+use Pod::Eventual::Simple;
 
-my @events;
-{
-  package Test::Pod::Eventual;
-  our @ISA = 'Pod::Eventual';
-  sub handle_event { push @events, $_[1] }
-}
-
-Test::Pod::Eventual->read_file('eg/test.pod');
+my $output = Pod::Eventual::Simple->read_file('eg/test.pod');
+my @events = grep { ref } @$output;
 
 my $want = [
   {
@@ -78,4 +72,4 @@ my $want = [
   },
 ];
 
-is_deeply(\@events, $want);
+is_deeply(\@events, $want, 'we got the events we expected');

@@ -1,5 +1,8 @@
 Revision history for Pod-Eventual
 
+0.003     2008-10-12
+          add Pod::Eventual::Simple to just get an arrayref of events
+
 0.002     2008-06-08
           some new features (line number, nonpod) from HDP
 

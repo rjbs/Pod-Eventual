@@ -4,6 +4,8 @@ package Pod::Eventual;
 # ABSTRACT: read a POD document as a series of trivial events
 use Mixin::Linewise::Readers;
 
+use Carp ();
+
 =head1 SYNOPSIS
 
   package Your::Pod::Parser;
@@ -199,7 +201,7 @@ event.  It must be implemented by a subclass or it will raise an exception.
 =cut
 
 sub handle_event {
-  die '...';
+  Carp::confess("handle_event not implemented by $_[0]");
 }
 
 =method handle_nonpod
