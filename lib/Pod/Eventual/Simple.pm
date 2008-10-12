@@ -3,6 +3,19 @@ use warnings;
 package Pod::Eventual::Simple;
 use Pod::Eventual;
 BEGIN { our @ISA = 'Pod::Eventual' }
+# ABSTRACT: just get an array of the stuff Pod::Eventual finds
+
+=head1 SYNOPSIS
+
+  use Pod::Eventual::Simple;
+
+  my $output = Pod::Eventual::Simple->read_file('awesome.pod');
+
+This subclass just returns an array reference when you use the reading methods.
+The arrayref contains all the POD events and non-POD content.  If you just want
+the POD events, grep for references.
+
+=cut
 
 sub new {
   my ($class) = @_;
