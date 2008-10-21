@@ -5,7 +5,7 @@ use Test::More tests => 1;
 use Pod::Eventual::Simple;
 
 my $output = Pod::Eventual::Simple->read_file('eg/test.pod');
-my @events = grep { ref } @$output;
+my @events = grep { $_->{type} ne 'nonpod' } @$output;
 
 my $want = [
   {
