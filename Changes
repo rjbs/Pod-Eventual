@@ -1,5 +1,8 @@
 Revision history for Pod-Eventual
 
+0.004     2008-10-21
+          NOT BACK COMPAT: Pod::Eventual::Simple provides hashrefs for non-pod
+
 0.003     2008-10-12
           add Pod::Eventual::Simple to just get an arrayref of events
 
