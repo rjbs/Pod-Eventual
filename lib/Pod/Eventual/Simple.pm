@@ -24,7 +24,7 @@ sub new {
 
 sub read_handle {
   my ($self, $handle, $arg) = @_;
-  return $self->new->read_handle($handle, $arg) unless ref $self;
+  $self = $self->new unless ref $self;
   $self->SUPER::read_handle($handle, $arg);
   return [ @$self ];
 }
