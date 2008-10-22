@@ -47,4 +47,4 @@ sub handle_nonpod {
   push @$self, { type => 'nonpod', content => $line, start_line => $ln };
 }
 
-1;  
+1;
