@@ -142,7 +142,7 @@ sub read_handle {
       next LINE;
     }
 
-    $in_pod = 1 if $line =~ /^=\S+/;
+    $in_pod = 1 if $line =~ /\A=[a-z]/i;
 
     unless ($in_pod) {
       $self->handle_nonpod($line, $handle->input_line_number);
@@ -160,7 +160,7 @@ sub read_handle {
       next LINE;
     }
 
-    if ($line =~ /^=(\S+)(?:\s*)(.*?)(\n)\z/) {
+    if ($line =~ /^=([a-z]+\S*)(?:\s*)(.*?)(\n)\z/i) {
       my $command = $1;
       my $content = "$2$3";
       $current = {
