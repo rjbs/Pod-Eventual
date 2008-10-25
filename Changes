@@ -1,5 +1,8 @@
 Revision history for Pod-Eventual
 
+0.006     2008-10-25
+          tweak command paragraph detection to match perlpodspec
+
 0.005     2008-10-25
           lines of only whitespace are now considered blank (see perlpodspec)
 
