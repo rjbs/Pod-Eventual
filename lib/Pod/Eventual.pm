@@ -149,7 +149,7 @@ sub read_handle {
       next LINE;
     }
 
-    if ($line =~ /^$/) {
+    if ($line =~ /^\s*$/) {
       $self->handle_event($current) if $current;
       undef $current;
       next LINE;
