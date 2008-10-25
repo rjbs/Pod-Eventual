@@ -1,5 +1,8 @@
 Revision history for Pod-Eventual
 
+0.005     2008-10-25
+          lines of only whitespace are now considered blank (see perlpodspec)
+
 0.004     2008-10-21
           NOT BACK COMPAT: Pod::Eventual::Simple provides hashrefs for non-pod
 
