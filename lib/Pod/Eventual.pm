@@ -151,6 +151,7 @@ sub read_handle {
 
     if ($line =~ /^\s*$/) {
       $self->handle_event($current) if $current;
+      # I don't think it's worth having handle_blank. -- rjbs, 2008-10-26
       undef $current;
       next LINE;
     }
