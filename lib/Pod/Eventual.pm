@@ -152,18 +152,15 @@ sub read_handle {
     if ($line =~ /^\s*$/) {
       if ($current and $current->{type} ne 'blank') {
         $self->handle_event($current);
-        # I don't think it's worth having handle_blank. -- rjbs, 2008-10-26
+
         $current = {
           type       => 'blank',
           content    => '',
           start_line => $handle->input_line_number,
         };
-
-      #undef $current;
-      #next LINE;
       }
     } elsif ($current and $current->{type} eq 'blank') {
-      $self->handle_event($current);
+      $self->handle_blank($current);
       undef $current;
     }
 
@@ -226,5 +223,15 @@ If unimplemented by a subclass, it does nothing by default.
 =cut
 
 sub handle_nonpod { }
+
+=method handle_blank
+
+This method is called at the end of a sequence of one or more blank lines.
+
+If unimplemented by a subclass, it does nothing by default.
+
+=cut
+
+sub handle_blank  { }
 
 1;

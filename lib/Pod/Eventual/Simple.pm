@@ -42,6 +42,8 @@ sub handle_event {
   push @$self, $event;
 }
 
+BEGIN { *handle_blank = \&handle_event; }
+
 sub handle_nonpod {
   my ($self, $line, $ln) = @_;
   push @$self, { type => 'nonpod', content => $line, start_line => $ln };
