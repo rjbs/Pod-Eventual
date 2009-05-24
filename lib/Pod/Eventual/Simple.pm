@@ -12,7 +12,7 @@ BEGIN { our @ISA = 'Pod::Eventual' }
   my $output = Pod::Eventual::Simple->read_file('awesome.pod');
 
 This subclass just returns an array reference when you use the reading methods.
-The arrayref contains all the POD events and non-POD content.  Non-POD content
+The arrayref contains all the Pod events and non-Pod content.  Non-Pod content
 is given as hashrefs like this:
 
   {
@@ -22,6 +22,12 @@ is given as hashrefs like this:
   }
 
 For just the POD events, grep for C<type> not equals "nonpod"
+
+=begin Pod::Coverage
+
+  new
+
+=end Pod::Coverage
 
 =cut
 
