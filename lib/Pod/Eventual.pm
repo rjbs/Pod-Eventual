@@ -150,10 +150,21 @@ sub read_handle {
     }
 
     if ($line =~ /^\s*$/) {
-      $self->handle_event($current) if $current;
-      # I don't think it's worth having handle_blank. -- rjbs, 2008-10-26
+      if ($current and $current->{type} ne 'blank') {
+        $self->handle_event($current);
+        # I don't think it's worth having handle_blank. -- rjbs, 2008-10-26
+        $current = {
+          type       => 'blank',
+          content    => '',
+          start_line => $handle->input_line_number,
+        };
+
+      #undef $current;
+      #next LINE;
+      }
+    } elsif ($current and $current->{type} eq 'blank') {
+      $self->handle_event($current);
       undef $current;
-      next LINE;
     }
 
     if ($current) {
