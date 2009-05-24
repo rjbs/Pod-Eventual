@@ -23,11 +23,7 @@ is given as hashrefs like this:
 
 For just the POD events, grep for C<type> not equals "nonpod"
 
-=begin Pod::Coverage
-
-  new
-
-=end Pod::Coverage
+=for Pod::Coverage new
 
 =cut
 
