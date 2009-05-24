@@ -71,7 +71,12 @@ special case is C<=cut>, which is never more than one line.
   =cut
   We are no longer parsing POD when this line is read.
 
-  { type => 'command', command => 'cut', content => "\n", start_line => 15 }
+  {
+    type    => 'command',
+    command => 'cut',
+    content => "\n",
+    start_line => 15,
+  }
 
 Waiving this special case may be an option in the future.
 
@@ -84,7 +89,11 @@ a verbatim event.
 
 Text events look like this:
 
-  { type => 'text', content => "a string of text ending with a\n", start_line =>  16 }
+  {
+    type    => 'text',
+    content => "a string of text ending with a\n",
+    start_line =>  16
+  }
 
 =head2 Verbatim Events
 

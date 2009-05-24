@@ -1,4 +1,7 @@
-Revision history for Pod-Eventual
+Revision history for {{$dist->name}}
+
+{{$NEXT}}
+          add "blank" events to capture blank lines
 
 0.006     2008-10-25
           tweak command paragraph detection to match perlpodspec
