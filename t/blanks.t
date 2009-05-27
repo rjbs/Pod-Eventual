@@ -40,14 +40,14 @@ block.
   {
     content    => '  For example I have now begin a verbatim paragraph
 ',
-    type       => 'verbatim',
+    type       => 'text',
     start_line => '9'
   },
   blank_at(10),
   {
     content    => '  and despite the intervening blank I am still in it, and
 ',
-    type       => 'verbatim',
+    type       => 'text',
     start_line => '11'
   },
   blank_at(12, 2),
@@ -56,7 +56,7 @@ block.
       '  even several blank lines are included -- without loss -- in the final
   verbatim paragraph.
 ',
-    type       => 'verbatim',
+    type       => 'text',
     start_line => '14'
   },
 

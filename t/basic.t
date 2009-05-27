@@ -50,7 +50,7 @@ my $want = [
     start_line => 19,
   },
   {
-    type    => 'verbatim',
+    type    => 'text',
     content => "  This one is verbatim.\n",
     start_line => 21,
   },
@@ -60,7 +60,7 @@ my $want = [
     start_line => 23,
   },
   {
-    type    => 'verbatim',
+    type    => 'text',
     content => "  And then verbatim\n"
       . "Including a secondary unindented line.  Oops!  Should still work.\n",
     start_line => 25,

@@ -83,9 +83,12 @@ Waiving this special case may be an option in the future.
 =head2 Text Events
 
 A text event is just a paragraph of text, beginning after one or more empty
-lines and running until the next empty line (or F<=cut>).  The only special
-rule is that a text event's first line must not be indented, or it will become
-a verbatim event.
+lines and running until the next empty line (or F<=cut>).  In Perl 5's standard
+usage of Pod, text content that begins with whitespace is a "verbatim"
+paragraph, and text content that begins with non-whitespace is an "ordinary"
+paragraph.
+
+Pod::Eventual doesn't care.
 
 Text events look like this:
 
@@ -94,15 +97,6 @@ Text events look like this:
     content => "a string of text ending with a\n",
     start_line =>  16
   }
-
-=head2 Verbatim Events
-
-Verbatim events are identical to text events, but are created when the first
-line of text begins with whitespace.  The only semantic difference is that
-verbatim events should not be subject to interpretation as POD text (for things
-like C<< LE<lt>E<gt> >> and so on).  They are often also rendered in monospace.
-
-Pod::Eventual doesn't care.
 
 =method read_handle
 
@@ -190,16 +184,6 @@ sub read_handle {
       next LINE;
     }
 
-    if ($line =~ /^(\s+.+)\z/s) {
-      my $content = $1;
-      $current = {
-        type       => 'verbatim',
-        content    => $content,
-        start_line => $handle->input_line_number,
-      };
-      next LINE;
-    }
-        
     $current = { 
       type       => 'text',
       content    => $line,
