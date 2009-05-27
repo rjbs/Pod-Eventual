@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+          eliminate verbatim events; verbatim detection is left to a higher
+          level library
+
+0.091440  2009-05-23
           add "blank" events to capture blank lines
 
 0.006     2008-10-25
