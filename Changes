@@ -2,6 +2,7 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
           nonpod events are now monolithic for each nonpod segment
+          we call the correct method for the last event in input
 
 0.091470  2009-05-27
           eliminate verbatim events; verbatim detection is left to a higher
