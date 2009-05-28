@@ -204,7 +204,14 @@ sub read_handle {
     };
   }
 
-  $self->handle_event($current) if $current;
+  if ($current) {
+    my $method = $current->{type} eq 'blank'  ? 'handle_blank'
+               : $current->{type} eq 'nonpod' ? 'handle_nonpod'
+               :                                'handle_event';
+
+    $self->$method($current) if $current;
+  }
+
   return;
 }
 
