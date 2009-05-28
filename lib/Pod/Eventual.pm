@@ -36,7 +36,7 @@ will be called, and will raise an exception.
 
 =head1 EVENTS
 
-There are three kinds of events that Pod::Eventual will produce.  All are
+There are four kinds of events that Pod::Eventual will produce.  All are
 represented as hash references.
 
 =head2 Command Events
@@ -95,7 +95,31 @@ Text events look like this:
   {
     type    => 'text',
     content => "a string of text ending with a\n",
-    start_line =>  16
+    start_line =>  16,
+  }
+
+=head2 Blank events
+
+These events represent blank lines (or many blank lines) within a Pod section.
+
+Blank events look like this:
+
+  {
+    type    => 'blank',
+    content => "\n\n\n\n",
+    start_line => 21,
+  }
+
+=head2 Non-Pod events
+
+These events represent non-Pod segments of the input.
+
+Non-Pod events look like this:
+
+  {
+    type    => 'nonpod',
+    content => "#!/usr/bin/perl\nuse strict;\n\nuse Acme::ProgressBar\n\n",
+    start_line => 1,
   }
 
 =method read_handle
