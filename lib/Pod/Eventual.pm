@@ -131,7 +131,7 @@ sub read_handle {
   my $current;
 
   LINE: while (my $line = $handle->getline) {
-    if ($line =~ /^=cut(?:\s*)(.*?)(\n)\z/) {
+    if ($in_pod and $line =~ /^=cut(?:\s*)(.*?)(\n)\z/) {
       my $content = "$1$2";
       $in_pod = 0;
       $self->handle_event($current) if $current;
@@ -145,10 +145,23 @@ sub read_handle {
       next LINE;
     }
 
-    $in_pod = 1 if $line =~ /\A=[a-z]/i;
+    if ($line =~ /\A=[a-z]/i) {
+      if ($current and not $in_pod) {
+        $self->handle_nonpod($current);
+        undef $current;
+      }
 
-    unless ($in_pod) {
-      $self->handle_nonpod($line, $handle->input_line_number);
+      $in_pod = 1;
+    }
+
+    if (not $in_pod) {
+      $current ||= {
+        type       => 'nonpod',
+        start_line => $handle->input_line_number,
+        content    => '',
+      };
+
+      $current->{content} .= $line;
       next LINE;
     }
 
@@ -208,8 +221,8 @@ sub handle_event {
 
 =method handle_nonpod
 
-This method is called each time a non-POD line is seen -- that is, lines after
-C<=cut> and before another command.
+This method is called each time a non-POD segment is seen -- that is, lines
+after C<=cut> and before another command.
 
 If unimplemented by a subclass, it does nothing by default.
 

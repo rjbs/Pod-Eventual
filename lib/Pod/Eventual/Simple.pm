@@ -44,15 +44,9 @@ sub handle_event {
   push @$self, $event;
 }
 
-BEGIN { *handle_blank = \&handle_event; }
-
-sub handle_nonpod {
-  my ($self, $line, $ln) = @_;
-  if (@$self and $self->[ -1 ]{type} eq 'nonpod') {
-    $self->[ -1 ]{content} .= $line;
-  } else {
-    push @$self, { type => 'nonpod', content => $line, start_line => $ln };
-  }
+BEGIN {
+  *handle_blank  = \&handle_event;
+  *handle_nonpod = \&handle_event;
 }
 
 1;
