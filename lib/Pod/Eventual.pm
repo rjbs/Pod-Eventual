@@ -135,15 +135,18 @@ file.  By default, this is false.
 
 This is useful to behave differently when reading a F<.pm> or F<.pod> file.
 
+B<Important:> the handle is expected to have an encoding layer so that it will
+return text, not bytes, on reads.
+
 =method read_file
 
 This behaves just like C<read_handle>, but expects a filename rather than a
-handle.
+handle.  The file will be assumed to be UTF-8 encoded.
 
 =method read_string
 
 This behaves just like C<read_handle>, but expects a string containing POD
-rather than a handle.
+text rather than a handle.
 
 =cut
 
@@ -221,7 +224,7 @@ sub read_handle {
       next LINE;
     }
 
-    $current = { 
+    $current = {
       type       => 'text',
       content    => $line,
       start_line => $handle->input_line_number,
