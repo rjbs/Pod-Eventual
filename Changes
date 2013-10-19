@@ -2,6 +2,9 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.094000  2013-10-19 17:14:10 America/New_York
+          tiny documentation tweak
+
 0.093331  2013-10-12 22:28:59 America/New_York
           update repo and bugtracker
 
