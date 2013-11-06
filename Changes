@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+          require Mixin-Linewise 0.102 to avoid busted 0.101
 
 0.094000  2013-10-19 17:14:10 America/New_York
           tiny documentation tweak

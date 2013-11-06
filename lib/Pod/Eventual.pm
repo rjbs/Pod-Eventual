@@ -2,7 +2,7 @@ use strict;
 use warnings;
 package Pod::Eventual;
 # ABSTRACT: read a POD document as a series of trivial events
-use Mixin::Linewise::Readers;
+use Mixin::Linewise::Readers 0.102;
 
 use Carp ();
 
