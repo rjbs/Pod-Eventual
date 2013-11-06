@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.094001  2013-11-05 22:09:53 America/New_York
           require Mixin-Linewise 0.102 to avoid busted 0.101
 
 0.094000  2013-10-19 17:14:10 America/New_York
