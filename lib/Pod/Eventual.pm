@@ -244,7 +244,7 @@ sub read_handle {
 
 =method handle_event
 
-This method is called each time Pod::Evental finishes scanning for a new POD
+This method is called each time Pod::Eventual finishes scanning for a new POD
 event.  It must be implemented by a subclass or it will raise an exception.
 
 =cut
