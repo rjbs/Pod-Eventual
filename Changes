@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.094002  2021-07-03 13:16:26-04:00 America/New_York
         - fix typo (thanks, BooK!)
         - update author contact info
         - document perl version policy
