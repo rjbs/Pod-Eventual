@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - fix typo (thanks, BooK!)
+        - update author contact info
+        - document perl version policy
 
 0.094001  2013-11-05 22:09:53 America/New_York
           require Mixin-Linewise 0.102 to avoid busted 0.101
