@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - update author contact info
 
 0.094002  2021-07-03 13:16:26-04:00 America/New_York
         - fix typo (thanks, BooK!)
